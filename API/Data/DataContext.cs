@@ -17,6 +17,8 @@ namespace API.Data
     {
         public DataContext(DbContextOptions options) : base(options)
         {
+            // Get rid of table builds for postgres
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         }
 
         public DbSet<UserLike> Likes { get; set; }
